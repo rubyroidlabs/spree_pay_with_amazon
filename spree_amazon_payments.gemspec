@@ -18,13 +18,13 @@ Gem::Specification.new do |s|
   s.required_ruby_version     = '>= 2.1.0'
   s.required_rubygems_version = '>= 1.8.23'
 
-  s.author    = 'Amazon Payments'
+  s.author = 'Amazon Payments'
 
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '~> 3.1.0'
   s.add_dependency 'httparty'
+  s.add_dependency 'spree_core', '>= 3.1.0', '< 5.0'
 
   s.add_development_dependency 'capybara', '~> 2.4'
   s.add_development_dependency 'coffee-rails'
