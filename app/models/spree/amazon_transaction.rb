@@ -8,7 +8,7 @@
 #
 ##
 module Spree
-  class AmazonTransaction < ActiveRecord::Base
+  class AmazonTransaction < ApplicationRecord
     has_many :payments, :as => :source
 
     def name
