@@ -9,11 +9,9 @@
 ##
 
 module Spree
-  module Payment
-    module ProcessingDecorator
-      def close!
-        gateway_action(source, :close, :close)
-      end
+  module Payment::ProcessingDecorator
+    def close!
+      gateway_action(source, :close, :close)
     end
   end
 end
