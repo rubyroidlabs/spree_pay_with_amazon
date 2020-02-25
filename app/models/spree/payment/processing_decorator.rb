@@ -7,8 +7,15 @@
 # @license     http://opensource.org/licenses/Apache-2.0  Apache License, Version 2.0
 #
 ##
-Spree::Payment::Processing.class_eval do
-  def close!
-    gateway_action(source, :close, :close)
+
+module Spree
+  module Payment
+    module ProcessingDecorator
+      def close!
+        gateway_action(source, :close, :close)
+      end
+    end
   end
 end
+
+Spree::Payment::Processing.prepend(Spree::Payment::ProcessingDecorator)
