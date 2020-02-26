@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ##
 # Amazon Payments - Login and Pay for Spree Commerce
 #
@@ -18,8 +20,18 @@ module SpreeAmazonPayments
       g.test_framework :rspec
     end
 
-    initializer "spree.gateway.payment_methods", :after => "spree.register.payment_methods" do |app|
+    initializer 'spree.gateway.payment_methods', after: 'spree.register.payment_methods' do |app|
       app.config.spree.payment_methods << Spree::Gateway::Amazon
+    end
+
+    initializer 'spere_amazon_payments.configuration' do
+      Spree::AppConfiguration.class_eval do
+        preference :amazon_checkout_display_mode, :string, default: 'modified_checkout'
+        preference :amazon_client_id, :string
+        preference :amazon_merchant_id, :string
+        preference :amazon_aws_access_key_id, :string
+        preference :amazon_aws_secret_access_key, :string
+      end
     end
 
     def self.activate
